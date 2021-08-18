@@ -1,0 +1,57 @@
+<%@page import="org.senai.model.Usuario"%>
+<%@page import="org.senai.dao.UsuarioDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Editar Usuário</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<%
+Usuario u = uDao.getUsuario();
+try{
+int id = Integer.parseInt(request.getParameter("id"));
+UsuarioDao uDao = new UsuarioDao();
+Usuario u = uDao.getUsuario(id);
+}catch(Exception e){
+	
+}
+%>
+
+<body>
+<form action="editarusuarioservlet" method="Post">
+ 	<jsp:include page="Menu.jsp" />
+        <fieldset>
+            <legend>EDITAR USUÁRIO</legend>
+                <img id="img-java" src="img/java.png">
+                
+                <label for="login">Id:</label>
+                <input type="text" class="larguraTexto" id="id" name="id_usuario" value="<%= u.getId() %>" disabled="disabled" >
+                <label for="login">Login:</label>
+                <input type="text" class="larguraTexto" id="login" name="login-usuario" value="<%=u.getLogin() %>">
+                <label for="telefone">Senha:</label>
+                <input type="password" class="larguraTexto" id="senha" name="senha-usuario" value="<%=u.getSenha()%>">
+                <label for="sexo">Perfil:</label>
+                <div class="bloco-inline">
+                    <input type="radio" id="adm" name="perfil" value="administrador"><label for="adm">Administrador</label>
+                    <input type="radio" id="ope" name="perfil" value="operador"><label for="ope">Operador</label>
+                    <input type="radio" id="est" name="perfil" value="estagiario"><label for="est">Estagiário</label>
+                </div>
+                
+                <input type="submit" class="bt" id="espacamento" value="Atualizar">
+                <input type="reset" class="bt"  value="Limpar">
+        </fieldset>
+    </form> 
+    <script type="text/javascript">
+var lsPerfil = document.getElementsByName("perfil");
+for (i in lsPerfil){
+	if(lsPerfil[i].value == '<%=u.getPerfil()%>'){
+		lsPerfil[i].setAttrtibute('checked', 'checked');
+	}
+}
+
+</script>
+</body>
+</html>

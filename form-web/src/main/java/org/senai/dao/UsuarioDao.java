@@ -16,9 +16,9 @@ public class UsuarioDao {
 		try {
 			Connection cont = Conexao.conectar();
 
-			String sql = "insert into login (login, senha, perfil)"
-			   		+ "values('"+objU.getLogin()+"', '"+objU.getSenha()+"','"+objU.getPerfil()+"');";
-			
+			String sql = "insert into login (login, senha, perfil)" + "values('" + objU.getLogin() + "', '"
+					+ objU.getSenha() + "','" + objU.getPerfil() + "');";
+
 			PreparedStatement pst = cont.prepareStatement(sql);
 			pst.execute();
 			pst.close();
@@ -34,8 +34,7 @@ public class UsuarioDao {
 		List<Usuario> ls = new ArrayList<>();
 		try {
 			Connection cont = Conexao.conectar();
-			PreparedStatement pst = cont.prepareStatement(
-					"select id_login, login, senha, perfil from login");
+			PreparedStatement pst = cont.prepareStatement("select id_login, login, senha, perfil from login");
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				Usuario u = new Usuario();
@@ -54,17 +53,37 @@ public class UsuarioDao {
 		return ls;
 	}
 	
+	public Usuario getUsuario(int id) {
+		Usuario u = new Usuario();
+
+		try {
+			Connection cont = Conexao.conectar();
+			PreparedStatement pst = cont.prepareStatement("select id_login, login, senha, perfil from login where id_login = ?");
+			pst.setInt(1, id);
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				u.setId(rs.getInt("id_login"));
+				u.setLogin(rs.getString("login"));
+				u.setSenha(rs.getString("senha"));
+				u.setPerfil(rs.getString("perfil"));
+			}
+			cont.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+		return u;
+	}
+
 	public boolean editarUsuario(Usuario objU) {
 
 		try {
 			Connection cont = Conexao.conectar();
 
-			String sql = "update login"
-						+"set login = '"+objU.getLogin() +"',"
-							+ "senha = '"+objU.getSenha()+"',"
-							+ "perfil = '"+objU.getPerfil()+"'"
-			   		+ "where id_login = '"+objU.getId()+"';";
-			
+			String sql = "update login set login = '" + objU.getLogin() + "'," + "senha = '" + objU.getSenha()
+					+ "'," + "perfil = '" + objU.getPerfil() + "'" + "where id_login = '" + objU.getId() + "';";
+
 			PreparedStatement pst = cont.prepareStatement(sql);
 			pst.executeUpdate();
 			pst.close();
@@ -75,4 +94,6 @@ public class UsuarioDao {
 		}
 		return false;
 	}
+	
+	
 }

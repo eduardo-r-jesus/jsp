@@ -45,9 +45,10 @@
 			<td><%=p.getTelefone()%></td>
 			<td><%=p.getDtNascimento()%></td>
 			<td><%=p.getEmail()%></td>
+			
 			<td><%=p.getEscolaridade()%></td>
-			<td><a href="formEditaCadastro.jsp?id=<%=p.getId()%>"><img id="img-icon-edit" src="img/edit-solid.svg" alt="Editar Registro"></a>
-			<a href="formExcluiCadastro.jsp?id=<%=p.getId()%>"><img id="img-icon-trash" src="img/trash-alt-solid.svg" alt="Excluir Registro"></a></td>
+			<td><a href="formCadastro.jsp?id=<%=p.getId()%>"><img id="img-icon-edit" src="img/edit-solid.svg" alt="Editar Registro"></a>
+			<a href="cadastroservlet?acao=excluir&id=<%=p.getId()%>"><img id="img-icon-trash" src="img/trash-alt-solid.svg" alt="Excluir Registro"></a></td>
 		</tr>
 
 		<%

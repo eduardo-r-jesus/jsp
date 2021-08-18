@@ -19,7 +19,7 @@
 	<H1>LISTAR USUÁRIOS</H1>
 	<table id="customers">
 		<tr>
-			<th>Id</th>
+			<th>ID</th>
 			<th>Login</th>
 			<th>Perfil</th>
 			<th>Ações</th>
@@ -36,8 +36,8 @@
 			<td><%=u.getId()%></td>
 			<td><%=u.getLogin()%></td>
 			<td><%=u.getPerfil()%></td>
-			<td><a href="formEditarUsuario.jsp?id=<%=u.getId()%>"><img id="img-icon-edit" src="img/edit-solid.svg" alt="Editar Registro"></a>
-			<a href="formExcluiUsuario.jsp?id=<%=u.getId()%>"><img id="img-icon-trash" src="img/trash-alt-solid.svg" alt="Excluir Registro"></a></td>
+			<td><!--a href="formEditarUsuario.jsp?id=<%=u.getId()%>"><img id="img-icon-edit" src="img/edit-solid.svg" alt="Editar Registro"></a>
+			<a href="formExcluiUsuario.jsp?id=<%=u.getId()%>"><img id="img-icon-trash" src="img/trash-alt-solid.svg" alt="Excluir Registro"></a --></td>
 		</tr>
 
 		<%
@@ -46,6 +46,12 @@
 	
 	
 	
+	<%
+		}else{
+		%>
+			<tr>
+			<td>"Nenhuma informação encontrada!"</td>
+			</tr>
 	<%
 		}
 		%>
