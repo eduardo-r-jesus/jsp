@@ -36,8 +36,8 @@
 			<td><%=u.getId()%></td>
 			<td><%=u.getLogin()%></td>
 			<td><%=u.getPerfil()%></td>
-			<td><!--a href="formEditarUsuario.jsp?id=<%=u.getId()%>"><img id="img-icon-edit" src="img/edit-solid.svg" alt="Editar Registro"></a>
-			<a href="formExcluiUsuario.jsp?id=<%=u.getId()%>"><img id="img-icon-trash" src="img/trash-alt-solid.svg" alt="Excluir Registro"></a --></td>
+			<td><a href="formCadastroUsuario.jsp?id=<%=u.getId()%>"><img id="img-icon-edit" src="img/edit-solid.svg" alt="Editar Registro"></a>
+			<a href="cadastrousuarioservlet?acao=excluir&id=<%=u.getId()%>"><img id="img-icon-trash" src="img/trash-alt-solid.svg" alt="Excluir Registro"></a></td>
 		</tr>
 
 		<%

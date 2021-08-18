@@ -43,8 +43,8 @@
 			<label for="sexo">Sexo:</label>
 			<div class="bloco-inline">
 				<input type="radio" id="masc" name="sexo" value="m"><label
-					for="masc">Masculino</label> <input type="radio" id="fem"
-					name="sexo" value="f"><label for="fem">Feminino</label>
+					for="masc">Masculino</label> 
+					<input type="radio" id="fem" name="sexo" value="f"><label for="fem">Feminino</label>
 			</div>
 			<label for="tecnologia">Tecnologia:</label>
 			<div class="bloco-inline">
@@ -63,7 +63,8 @@
 				<option value="Especialização">Especialização</option>
 				<option value="Mestrado">Mestrado</option>
 				<option value="Doutorado">Doutorado</option>
-			</select> <input type="submit" class="bt" id="espacamento" value="Enviar">
+			</select> 
+			<input type="submit" class="bt" id="espacamento" value="Enviar">
 			<input type="reset" class="bt" value="Limpar">
 		</fieldset>
 	</form>

@@ -3,8 +3,8 @@ package org.senai.model;
 public class Usuario {
 
 	 private int id;
-	 private String login;
-	 private String senha;
+	 private String login = "";;
+	 private String senha = "";;
 	 private String perfil;
 	
 	 public int getId() {

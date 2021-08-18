@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.senai.db.Conexao;
+import org.senai.model.Pessoa;
 import org.senai.model.Usuario;
 
 public class UsuarioDao {
@@ -34,7 +35,7 @@ public class UsuarioDao {
 		List<Usuario> ls = new ArrayList<>();
 		try {
 			Connection cont = Conexao.conectar();
-			PreparedStatement pst = cont.prepareStatement("select id_login, login, senha, perfil from login");
+			PreparedStatement pst = cont.prepareStatement("select id_login, login, senha, perfil from login order by id_login");
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				Usuario u = new Usuario();
@@ -52,13 +53,13 @@ public class UsuarioDao {
 
 		return ls;
 	}
-	
+
 	public Usuario getUsuario(int id) {
 		Usuario u = new Usuario();
 
 		try {
 			Connection cont = Conexao.conectar();
-			PreparedStatement pst = cont.prepareStatement("select id_login, login, senha, perfil from login where id_login = ?");
+			PreparedStatement pst = cont.prepareStatement("select * from login where id_login = ?");
 			pst.setInt(1, id);
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
@@ -76,16 +77,18 @@ public class UsuarioDao {
 		return u;
 	}
 
-	public boolean editarUsuario(Usuario objU) {
-
+	public boolean alterarUsuario(Usuario objU) {
 		try {
 			Connection cont = Conexao.conectar();
 
-			String sql = "update login set login = '" + objU.getLogin() + "'," + "senha = '" + objU.getSenha()
-					+ "'," + "perfil = '" + objU.getPerfil() + "'" + "where id_login = '" + objU.getId() + "';";
+			String sql = "update login set login = ?, senha = ?, perfil = ? where id_login = ?";
 
 			PreparedStatement pst = cont.prepareStatement(sql);
-			pst.executeUpdate();
+			pst.setString(1, objU.getLogin());
+			pst.setString(2, objU.getSenha());
+			pst.setString(3, objU.getPerfil());
+			pst.setInt(4, objU.getId());
+			pst.execute();
 			pst.close();
 			cont.close();
 			return true;
@@ -95,5 +98,22 @@ public class UsuarioDao {
 		return false;
 	}
 	
-	
+	public boolean excluirPessoa(int id) {
+		try {
+			Connection cont = Conexao.conectar();
+
+			String sql = "delete from login where id_login = ?";
+
+			PreparedStatement pst = cont.prepareStatement(sql);
+			pst.setInt(1, id);
+			pst.execute();
+			pst.close();
+			cont.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }
