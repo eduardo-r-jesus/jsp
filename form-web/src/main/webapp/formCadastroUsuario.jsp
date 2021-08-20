@@ -42,8 +42,20 @@
                     <input type="radio" id="estagiario" name="perfil" value="estagiario"><label for="est">Estagiário</label>
                 </div>
                 
-                <input type="submit" class="bt" id="espacamento" value="Enviar">
-                <input type="reset" class="bt"  value="Limpar">
+                <input type="submit" class="bt" id="espacamento" value="Gravar">
+                	<%
+				if(u.getId() > 0){
+			%>			
+			<a href="cadastrousuarioservlet?acao=excluir&id=<%=u.getId()%>" type="submit" class="bt" onclick="return confirm('Deseja realmente excluir o registro?')"	id="espacamento" value="Excluir">Excluir</a>
+			<%
+				}else{
+			%>
+			<input type="reset" class="bt" value="Limpar">
+			<%
+				}
+			%>			
+			<a href="formCadastroUsuario.jsp" type="submit" class="bt"	id="espacamento" value="Cadastrar">Novo Cadastro</a>
+                
         </fieldset>
     </form> 
     <script type="text/javascript">
@@ -54,5 +66,6 @@
 			}
 		}
 	</script>
+	<%@ include file="formListaUsuario.jsp" %>
 </body>
 </html>

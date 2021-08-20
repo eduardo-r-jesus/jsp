@@ -13,8 +13,8 @@ public class LoginServlet extends HttpServlet{
 	
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		String loginV = "eduardo.jesus@hotmail.com";
-		String senhaV = "0123";
+		String loginV = "admin";
+		String senhaV = "admin";
 		
 		String login = req.getParameter("login");
 		String senha = req.getParameter("senha");
@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet{
 		PrintWriter saida = res.getWriter();
 		saida.println("<!DOCTYPE html>");
 		if (loginV.equals(login) && senhaV.equals(senha)) {
-			res.sendRedirect("/form-web/formIndex.jsp");
+			res.sendRedirect("index.jsp");
 		} else {
 			saida.println("Acesso negado!");
 		}		

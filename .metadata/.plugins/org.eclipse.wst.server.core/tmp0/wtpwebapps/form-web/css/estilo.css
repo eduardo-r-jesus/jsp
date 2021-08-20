@@ -44,6 +44,9 @@ input:focus, select:focus{
     padding: 5px 10px;
     font-weight: bold;
     float: right;
+    text-decoration: none;
+    margin-top: 4px;
+    margin-left: 5px;
 }
 
 .bt:hover{
@@ -77,8 +80,7 @@ input:focus, select:focus{
     color: #FFF;
     padding: 10px 15px;
     float:right;    
-    margin-right: 80%;
-    margin-top: 25px;
+    margin-bottom: 35px;
     font-weight: bolder;
     text-decoration: none;
     font-size: 13px;
@@ -139,11 +141,16 @@ H1{
   #customers td {
     border: 1px solid blueviolet;
     padding: 8px;
+    
   }
   
-  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  #customers tr:nth-child(even){
+  background-color: #f2f2f2;}
   
-  #customers tr:hover {background-color: #ddd;}
+  #customers tr:hover {
+  background-color: #ddd;
+  cursor: pointer;
+  }
   
   #customers th {
     padding-top: 12px;
@@ -153,7 +160,6 @@ H1{
     border: 1px solid #ddd;
     text-align: center;
     font-weight: bolder;
-    
   }
   
   ul{

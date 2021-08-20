@@ -8,61 +8,47 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Lista de Pessoas</title>
-<link rel="stylesheet" href="css/estilo.css">
-</head>
-<body>
-	<jsp:include page="Menu.jsp" />
-	<H1>LISTAR PESSOAS</H1>
-	<table id="customers">
-		<tr>
-			<th>Id</th>
-			<th>Nome Completo</th>
-			<th>Telefone</th>
-			<th>Data Nascimento</th>
-			<th>Email</th>
-			<th>Escolaridade</th>
-			<th>Ações</th>
-			
-		</tr>
-		
 
-		<%
-		PessoaDao objDao = new PessoaDao();
-		List<Pessoa> ls = objDao.listarPessoa();
+<H1>LISTAR PESSOAS</H1>
+<table id="customers">
+	<tr>
+		<th>Id</th>
+		<th>Nome Completo</th>
+		<th>Telefone</th>
+		<th>Data Nascimento</th>
+		<th>Email</th>
+		<th>Escolaridade</th>
+	</tr>
 
-		if (ls.size() > 0) {
-		for(Pessoa p : ls) {
-		%>
-		<tr>
-
-			<td><%=p.getId()%></td>
-			<td><%=p.getNomeCompleto()%></td>
-			<td><%=p.getTelefone()%></td>
-			<td><%=p.getDtNascimento()%></td>
-			<td><%=p.getEmail()%></td>
-			
-			<td><%=p.getEscolaridade()%></td>
-			<td><a href="formCadastro.jsp?id=<%=p.getId()%>"><img id="img-icon-edit" src="img/edit-solid.svg" alt="Editar Registro"></a>
-			<a href="cadastroservlet?acao=excluir&id=<%=p.getId()%>"><img id="img-icon-trash" src="img/trash-alt-solid.svg" alt="Excluir Registro"></a></td>
-		</tr>
-
-		<%
-		}
-		%>
-	
-	
-	
 	<%
-		}
-		%>
-			</table>
-		<a href="/form-web/formCadastro.jsp" type="submit" class="bt_cadastrar" id="espacamento" value="Cadastrar">Cadastrar</a>
+	PessoaDao objDao = new PessoaDao();
+	List<Pessoa> ls = objDao.listarPessoa();
 
+	if (ls.size() > 0) {
+		for (Pessoa ps : ls) {
+	%>
+	<tr onclick="window.location.href = 'formCadastro.jsp?id=<%=ps.getId()%>'">
 
-</body>
-</html>
+		<td><%=ps.getId()%></td>
+		<td><%=ps.getNomeCompleto()%></td>
+		<td><%=ps.getTelefone()%></td>
+		<td><%=ps.getDtNascimento()%></td>
+		<td><%=ps.getEmail()%></td>
+		<td><%=ps.getEscolaridade()%></td>
+		<!-- td><a href="formCadastro.jsp?id=<%=ps.getId()%>"><img
+				id="img-icon-edit" src="img/edit-solid.svg" alt="Editar Registro"></a>
+			<a href="cadastroservlet?acao=excluir&id=<%=ps.getId()%>"><img
+				id="img-icon-trash" src="img/trash-alt-solid.svg"
+				alt="Excluir Registro"></a></td-->
+	</tr>
+
+	<%
+	}
+
+	}
+	%>
+
+</table>
+<!--a href="formCadastro.jsp" type="submit" class="bt_cadastrar"
+	id="espacamento" value="Cadastrar">Cadastrar</a-->
+

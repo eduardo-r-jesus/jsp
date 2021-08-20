@@ -14,8 +14,10 @@ public class PessoaDao {
 
 	public boolean adicionarPessoa(Pessoa objP) {
 		String lsTecnologia = "";
-		for (String t : objP.getTecnologia()) {
-			lsTecnologia += t + " - ";
+		if(objP.getTecnologia() != null) {
+			for (String t : objP.getTecnologia()) {
+				lsTecnologia += t + " - ";
+			}
 		}
 
 		try {
@@ -94,8 +96,10 @@ public class PessoaDao {
 
 	public boolean alterarPessoa(Pessoa objP) {
 		String lsTecnologia = "";
-		for (String t : objP.getTecnologia()) {
-			lsTecnologia += t + " - ";
+		if(objP.getTecnologia() != null) {
+			for (String t : objP.getTecnologia()) {
+				lsTecnologia += t + " - ";
+			}
 		}
 		try {
 			Connection cont = Conexao.conectar();
@@ -121,7 +125,7 @@ public class PessoaDao {
 		}
 		return false;
 	}
-	
+
 	public boolean excluirPessoa(int id) {
 		try {
 			Connection cont = Conexao.conectar();

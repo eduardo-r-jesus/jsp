@@ -64,8 +64,20 @@
 				<option value="Mestrado">Mestrado</option>
 				<option value="Doutorado">Doutorado</option>
 			</select> 
-			<input type="submit" class="bt" id="espacamento" value="Enviar">
+			<input type="submit" class="bt" id="espacamento" value="Gravar">
+			<%
+				if(p.getId() > 0){
+			%>			
+			<a href="cadastroservlet?acao=excluir&id=<%=p.getId()%>" type="submit" class="bt" onclick="return confirm('Deseja realmente excluir o registro?')"	id="espacamento" value="Excluir">Excluir</a>
+			<%
+				}else{
+			%>
 			<input type="reset" class="bt" value="Limpar">
+			<%
+				}
+			%>			
+			<a href="formCadastro.jsp" type="submit" class="bt"	id="espacamento" value="Cadastrar">Novo Cadastro</a>
+			
 		</fieldset>
 	</form>
 	<script type="text/javascript">
@@ -85,5 +97,6 @@
 		%>
 		
 	</script>
+	<%@ include file="formListaCadastro.jsp" %>
 </body>
 </html>

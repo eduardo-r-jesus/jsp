@@ -52,7 +52,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
 			validar = objUDao.adicionarUsuario(objU);
 		}
 		if (validar) {
-			res.sendRedirect("formListaUsuario.jsp");
+			res.sendRedirect("formCadastroUsuario.jsp");
 		} else {
 			PrintWriter saida = res.getWriter();
 			saida.println("<html>");

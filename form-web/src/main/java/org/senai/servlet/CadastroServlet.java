@@ -50,7 +50,7 @@ public class CadastroServlet extends HttpServlet {
 			validar = objDao.adicionarPessoa(objP);
 		}
 		if (validar) {
-			res.sendRedirect("formListaCadastro.jsp");
+			res.sendRedirect("formCadastro.jsp");
 		} else {
 			PrintWriter saida = res.getWriter();
 			saida.println("<html>");
